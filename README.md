@@ -30,6 +30,9 @@ cd github
     date > .keep
     git status
     git diff
+    git add .
+    git commit -m 'update .keep'
+    git status
     exit
   ./devops/compose/down.sh
 ```
