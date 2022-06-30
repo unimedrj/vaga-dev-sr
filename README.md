@@ -33,6 +33,7 @@ cd github
     git add .
     git commit -m 'update .keep'
     git status
+    git push
     exit
   ./devops/compose/down.sh
 ```
