@@ -27,6 +27,9 @@ cd github
   ./devops/compose/exec.sh app bash
     ruby -v
     node -v
+    date > .keep
+    git status
+    git diff
     exit
   ./devops/compose/down.sh
 ```
