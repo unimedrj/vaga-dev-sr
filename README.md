@@ -7,7 +7,7 @@
   - Version: 14.1-R1
   - Instance: db.t3.micro
   - Free Tier? Yes
-- Elaticash
+- ElastiCash
   - DB: Redis
   - Version: 6.2
   - Instance: cash.t4g.micro
