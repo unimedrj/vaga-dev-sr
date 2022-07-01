@@ -52,6 +52,7 @@ group :development, :test do
   gem 'rubocop', '1.31.1'
   gem 'rubocop-rails', '2.15.1'
   gem 'rubocop-rspec', '2.11.1'
+  gem 'bundle-audit', '0.1.0'
 end
 
 group :test do
@@ -71,3 +72,4 @@ group :development do
 end
 
 gem 'redis', '4.7.0'
+

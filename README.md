@@ -27,20 +27,24 @@ cd github
   ./devops/compose/exec.sh app bash
     ruby -v
     node -v
+    bundle install
+    npm install
+
     date > .keep
-    rubocop -a
     git status
     git diff
     git add .
     git commit -m 'update .keep'
     git status
     git push
-    bundle install
-    npm install
+
     rails db:create
     RAILS_ENV=test rails db:create
     rails db:migrate db:seed
     rspec
+    rubocop -a
+    bundle-audit
+
     rails c
       Redis.new.keys
       exit
