@@ -30,6 +30,10 @@ cd github
     bundle install
     npm install
 
+    rubocop -a
+    bundle-audit
+    circleci config validate
+
     date > .keep
     git status
     git diff
@@ -42,8 +46,6 @@ cd github
     RAILS_ENV=test rails db:create
     rails db:migrate db:seed
     rspec
-    rubocop -a
-    bundle-audit
 
     rails c
       Redis.new.keys

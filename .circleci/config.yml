@@ -1,0 +1,93 @@
+version: 2.1
+
+orbs:
+  ruby: circleci/ruby@1.4.0
+
+executors:
+  docker-executor:
+    docker:
+      - image: cimg/ruby:3.1.2
+        environment:
+          DATABASE_URL: postgres://user:password@localhost:5432
+          REDIS_URL: redis://:@localhost:6379
+      - image: postgres:14.1
+        environment:
+          POSTGRES_USER: user
+          POSTGRES_PASSWORD: password
+      - image: redis:6.2
+
+jobs:
+  build:
+    working_directory: ~/vaga-dev-sr
+    executor: docker-executor
+    steps:
+      - checkout
+      - run:
+          name: Docker
+          command: |
+            sudo chown circleci:circleci -R /usr/local
+
+            wget -nv "https://nodejs.org/dist/v18.4.0/node-v18.4.0-linux-x64.tar.gz" && \
+              tar -xf "node-v18.4.0-linux-x64.tar.gz" --directory '/usr/local' --strip-components '1' && \
+              rm -rf "node-v18.4.0-linux-x64.tar.gz"
+      - restore_cache:
+          keys:
+            - rubygems-{{ checksum "Gemfile.lock" }}
+            - node_modules-{{ checksum "package-lock.json" }}
+      - run:
+          name: Bundle
+          command: bundle install
+      - save_cache:
+          paths:
+            - ~/.rubygems
+          key: rubygems-{{ checksum "Gemfile.lock" }}
+      - run:
+          name: NPM
+          command: npm install
+      - save_cache:
+          paths:
+            - node_modules
+          key: node_modules-{{ checksum "package-lock.json" }}
+  review:
+    working_directory: ~/vaga-dev-sr
+    executor: docker-executor
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - rubygems-{{ checksum "Gemfile.lock" }}
+            - node_modules-{{ checksum "package-lock.json" }}
+      - run:
+          name: Rubocop
+          command: rubocop
+      - run:
+          name: Bundle Audit
+          command: bundle-audit
+  test:
+    working_directory: ~/vaga-dev-sr
+    executor: docker-executor
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - rubygems-{{ checksum "Gemfile.lock" }}
+            - node_modules-{{ checksum "package-lock.json" }}
+      - run:
+          name: Rails
+          command: RAILS_ENV=test rails db:create
+      - run:
+          name: Rspec
+          command: rspec
+      - store_artifacts:
+          path: coverage
+
+workflows:
+  ci:
+    jobs:
+      - build
+      - review:
+          requires:
+            - build
+      - test:
+          requires:
+            - review

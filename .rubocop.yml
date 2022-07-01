@@ -11,11 +11,6 @@ inherit_from:
 
 # https://github.com/rubocop/rubocop/blob/v1.31.1/config/default.yml
 
-Style/FrozenStringLiteralComment:
-  Enabled: true
-  EnforcedStyle: always
-  SafeAutoCorrect: true
-
 Style/RedundantFetchBlock:
   Enabled: true
   Safe: true
