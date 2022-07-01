@@ -1,0 +1,35 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  NewCops: disable
+
+inherit_from:
+  - .rubocop_rails.yml
+  - .rubocop_rspec.yml
+
+# https://github.com/rubocop/rubocop/blob/v1.31.1/config/default.yml
+
+Style/FrozenStringLiteralComment:
+  Enabled: true
+  EnforcedStyle: always
+  SafeAutoCorrect: true
+
+Style/RedundantFetchBlock:
+  Enabled: true
+  Safe: true
+  SafeForConstants: true
+
+Style/GlobalStdStream:
+  StyleGuide: '#global-stdout'
+  Enabled: true
+  SafeAutoCorrect: true
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: true
+  EnforcedStyle: never
+  SafeAutoCorrect: true

@@ -28,6 +28,7 @@ cd github
     ruby -v
     node -v
     date > .keep
+    rubocop -a
     git status
     git diff
     git add .
@@ -39,6 +40,7 @@ cd github
     rails db:create
     RAILS_ENV=test rails db:create
     rails db:migrate db:seed
+    rspec
     rails c
       Redis.new.keys
       exit

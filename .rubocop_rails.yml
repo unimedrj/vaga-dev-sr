@@ -1,0 +1,4 @@
+# https://github.com/rubocop/rubocop-rails/blob/v2.15.1/config/default.yml
+
+Rails/FilePath:
+  Enabled: false
