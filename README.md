@@ -34,6 +34,17 @@ cd github
     git commit -m 'update .keep'
     git status
     git push
+    bundle install
+    npm install
+    rails db:create
+    RAILS_ENV=test rails db:create
+    rails db:migrate db:seed
+    rails c
+      Redis.new.keys
+      exit
+    rails s
+    # Brower: http://localhost:3000
+    # Press: CTRL+C
     exit
   ./devops/compose/down.sh
 ```
