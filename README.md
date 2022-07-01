@@ -15,7 +15,7 @@ Alguns requisitos:
 - A solução deve estar em um repositório público do GitHub;
 - A aplicação deve armazenar as informações encontradas;
 - Utilizar PostgreSQL;
-- O deploy deve ser realizado, preferencialmente, no Google Clou Run, Heroku, AWS ou no Azure;
+- O deploy deve ser realizado, preferencialmente, no Google Cloud Run, Heroku, AWS ou no Azure;
 - A aplicação precisa ter testes automatizados;
 - Preferenciamente dockerizar a aplicação;
 - Por favor atualizar o readme da aplicação com passo a passo com instrução para subir o ambiente.
