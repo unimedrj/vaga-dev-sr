@@ -1,0 +1,30 @@
+#controller data-init="controller.show('#{repository_path ':id'}')"
+  h1 = i18n_member Repository
+  dl
+    dt
+      b = i18n_attribute Repository, :id
+      span v-text="repository.id"
+    dt
+      b = i18n_attribute Repository, :name
+      span v-text="repository.name"
+    dt
+      b = i18n_attribute Repository, :full_name
+      span v-text="repository.full_name"
+    dt
+      b = i18n_attribute Repository, :description
+      span v-text="repository.description"
+    dt
+      b = i18n_attribute Repository, :external_id
+      span v-text="repository.external_id"
+    dt
+      b = i18n_attribute Repository, :metadata
+      textarea rows="20" cols="100" v-text="repository.metadata"
+    dt
+      b = i18n_attribute Repository, :created_at
+      span v-text="repository.created_at"
+    dt
+      b = i18n_attribute Repository, :updated_at
+      span v-text="repository.updated_at"
+
+  div
+    = link_to "Index", repositories_path

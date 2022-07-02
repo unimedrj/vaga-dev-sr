@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+    title
+      | GithubJMD
+    meta[name="viewport" content="width=device-width,initial-scale=1"]
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag "application", "data-turbolinks-track": "reload"
+    = javascript_include_tag "application", "data-turbolinks-track": "reload"
+  body
+    = yield
+    = stylesheet_link_tag controller_name, "data-turbolinks-track": "reload" if controller_name != 'application'
+    = javascript_include_tag controller_name, 'data-turbolinks-track': 'reload' if controller_name != 'application'

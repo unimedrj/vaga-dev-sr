@@ -1,0 +1,43 @@
+#controller data-init="controller.index('#{repositories_path}')"
+  h1 = i18n_collection Repository
+
+  p v-text="filter.errors" v-if="filter.errors.base"
+
+  form novalidate="" @submit.prevent="controller.index('#{repositories_path}')"
+    label for="name" Name:
+    input#name type="text" name="name" v-model="filter.params.name"
+    button Search
+
+  table
+    thead
+      tr
+        th = i18n_attribute Repository, :id
+        th = i18n_attribute Repository, :name
+        th = i18n_attribute Repository, :external_id
+        th = i18n_attribute Repository, :created_at
+        th = i18n_attribute Repository, :updated_at
+        th
+    tbody
+      tr v-for="repository in filter.results" :key="repository.id"
+        td
+          span v-text="repository.id"
+        td
+          span v-text="repository.name"
+        td
+          span v-text="repository.external_id"
+        td
+          span v-text="repository.created_at"
+        td
+          span v-text="repository.updated_at"
+        td
+          a :href="repository.path_to.show" Show
+    tfoot
+      tr
+        td colspan="100"
+          div
+            p v-text="filter.paginationLabel('#{ t 'views.pagination' }')"
+          div
+            button :disabled="!filter.isPrevious()" @click="filter.first(controller, '#{repositories_path}')" First
+            button :disabled="!filter.isPrevious()" @click="filter.previous(controller, '#{repositories_path}')" Previous
+            button :disabled="!filter.isNext()" @click="filter.next(controller, '#{repositories_path}')" Next
+            button :disabled="!filter.isNext()" @click="filter.last(controller, '#{repositories_path}')" Last

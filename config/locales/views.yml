@@ -1,0 +1,3 @@
+en:
+  views:
+    pagination: Page {page} of {pages} ({count} results)

@@ -1,1 +1,16 @@
 # https://github.com/rubocop/rubocop-rspec/blob/v2.11.1/config/default.yml
+
+RSpec/NamedSubject:
+  Enabled: false
+
+RSpec/InstanceVariable:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/ContextWording:
+  Enabled: false

@@ -22,18 +22,18 @@ jobs:
     executor: docker-executor
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - rubygems-{{ checksum "Gemfile.lock" }}
+            - node_modules-{{ checksum "package-lock.json" }}
       - run:
-          name: Docker
+          name: Node
           command: |
             sudo chown circleci:circleci -R /usr/local
 
             wget -nv "https://nodejs.org/dist/v18.4.0/node-v18.4.0-linux-x64.tar.gz" && \
               tar -xf "node-v18.4.0-linux-x64.tar.gz" --directory '/usr/local' --strip-components '1' && \
               rm -rf "node-v18.4.0-linux-x64.tar.gz"
-      - restore_cache:
-          keys:
-            - rubygems-{{ checksum "Gemfile.lock" }}
-            - node_modules-{{ checksum "package-lock.json" }}
       - run:
           name: Bundle
           command: bundle install
@@ -58,6 +58,20 @@ jobs:
             - rubygems-{{ checksum "Gemfile.lock" }}
             - node_modules-{{ checksum "package-lock.json" }}
       - run:
+          name: Node
+          command: |
+            sudo chown circleci:circleci -R /usr/local
+
+            wget -nv "https://nodejs.org/dist/v18.4.0/node-v18.4.0-linux-x64.tar.gz" && \
+              tar -xf "node-v18.4.0-linux-x64.tar.gz" --directory '/usr/local' --strip-components '1' && \
+              rm -rf "node-v18.4.0-linux-x64.tar.gz"
+      - run:
+          name: Bundle
+          command: bundle install
+      - run:
+          name: NPM
+          command: npm install
+      - run:
           name: Rubocop
           command: rubocop
       - run:
@@ -72,6 +86,20 @@ jobs:
           keys:
             - rubygems-{{ checksum "Gemfile.lock" }}
             - node_modules-{{ checksum "package-lock.json" }}
+      - run:
+          name: Node
+          command: |
+            sudo chown circleci:circleci -R /usr/local
+
+            wget -nv "https://nodejs.org/dist/v18.4.0/node-v18.4.0-linux-x64.tar.gz" && \
+              tar -xf "node-v18.4.0-linux-x64.tar.gz" --directory '/usr/local' --strip-components '1' && \
+              rm -rf "node-v18.4.0-linux-x64.tar.gz"
+      - run:
+          name: Bundle
+          command: bundle install
+      - run:
+          name: NPM
+          command: npm install
       - run:
           name: Rails
           command: RAILS_ENV=test rails db:create

@@ -1,3 +1,8 @@
 SimpleCov.start 'rails' do
-  minimum_coverage 100
+  add_filter 'channels'
+  add_filter 'helpers'
+  add_filter 'jobs'
+  add_filter 'mailers'
+
+  minimum_coverage 90
 end

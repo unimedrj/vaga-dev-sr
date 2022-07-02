@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+result = JSON.load_file(Rails.root.join('spec', 'support', 'api.github.com', 'repositories.json')).first
+100.times do |i|
+  result['id'] = i + 1
+  FactoryBot.create(:repository, result:)
+end

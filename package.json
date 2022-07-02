@@ -1,5 +1,5 @@
 {
-  "name": "github",
+  "name": "github_jmd",
   "version": "1.0.0",
   "description": "## AWS Resoucers",
   "main": "index.js",
@@ -18,5 +18,12 @@
   "bugs": {
     "url": "https://github.com/juniormesquitadandao/vaga-dev-sr/issues"
   },
-  "homepage": "https://github.com/juniormesquitadandao/vaga-dev-sr#readme"
+  "homepage": "https://github.com/juniormesquitadandao/vaga-dev-sr#readme",
+  "dependencies": {
+    "@babel/polyfill": "7.12.1",
+    "axios": "0.27.2",
+    "domurl": "^2.3.4",
+    "turbolinks": "5.2.0",
+    "vue": "2.7.0"
+  }
 }

@@ -1,0 +1,19 @@
+en:
+  activerecord:
+    models:
+      repository:
+        one: Repository
+        other: Repositories
+    attributes:
+      repository:
+        id: ID
+        name: Name
+        full_name: Full Name
+        description: Description
+        external_id: External ID
+        metadata: Metadata
+        created_at: Created
+        updated_at: Updated
+
+        repository: Repository
+        repositories: Repositories
