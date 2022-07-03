@@ -1,6 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe Repository, type: :model do
+  describe '.enum' do
+    it {
+      expect(subject).to define_enum_for(:language).with_values(
+        described_class::LANGUAGES.index_with(&:to_s)
+      ).with_prefix.backed_by_column_of_type(:string)
+    }
+  end
+
   describe '#name' do
     it { is_expected.to validate_presence_of :name }
   end

@@ -1,9 +1,12 @@
 #controller data-init="controller.show('#{repository_path ':id'}')"
-  h1 = i18n_member Repository
+  h2 = i18n_member Repository
   dl
     dt
       b = i18n_attribute Repository, :id
       span v-text="repository.id"
+    dt
+      b = i18n_attribute Repository, :language
+      span v-text="repository.language"
     dt
       b = i18n_attribute Repository, :name
       span v-text="repository.name"

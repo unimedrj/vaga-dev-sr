@@ -2,3 +2,6 @@
 
 Rails/FilePath:
   Enabled: false
+
+Rails/NotNullColumn:
+  Enabled: false

@@ -17,12 +17,6 @@ RSpec.describe '/repositories', type: :request do
     end
 
     context 'renders a unsuccessful response' do
-      it 'csv' do
-        get repositories_url(format: :csv)
-
-        expect(response).to be_not_found
-      end
-
       it 'json' do
         get repositories_url(format: :json)
 
@@ -57,6 +51,24 @@ RSpec.describe '/repositories', type: :request do
 
       it 'json' do
         get repository_url(id: 0, format: :json)
+
+        expect(response).to be_not_found
+      end
+    end
+  end
+
+  describe 'POST /create' do
+    context 'renders a successful response' do
+      it 'json' do
+        post repositories_url(format: :json)
+
+        expect(response).to be_successful
+      end
+    end
+
+    context 'renders a unsuccessful response' do
+      it 'html' do
+        post repositories_url
 
         expect(response).to be_not_found
       end

@@ -49,3 +49,10 @@ Style/MultilineBlockChain:
 
 Layout/LineLength:
   Enabled: false
+
+Lint/EmptyFile:
+  Enabled: false
+
+Naming/VariableNumber:
+  Enabled: true
+  EnforcedStyle: snake_case

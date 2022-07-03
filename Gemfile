@@ -56,8 +56,10 @@ group :development, :test do
 end
 
 group :test do
+  gem 'rails-controller-testing', '1.0.5'
   gem 'shoulda-matchers', '5.1.0'
   gem 'simplecov', '0.21.2', require: false
+  gem 'webmock', '3.14.0'
 end
 
 group :development do
@@ -77,3 +79,7 @@ gem 'babel-transpiler', '0.7.0'
 gem 'redis', '4.7.0'
 gem 'responders', '3.0.1'
 gem 'slim-rails', '3.5.1'
+
+gem 'enum_help', '0.0.19'
+
+gem 'faraday', '2.3.0'

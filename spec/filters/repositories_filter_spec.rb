@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe RepositoriesFilter, type: :filter do
   describe '#sort' do
     it { is_expected.to validate_presence_of :sort }
-    it { is_expected.to validate_inclusion_of(:sort).in_array(%w[id name external_id created_at updated_at]) }
+    it { is_expected.to validate_inclusion_of(:sort).in_array(%w[id language name external_id created_at updated_at]) }
   end
 
   describe '#order' do
@@ -29,7 +29,7 @@ RSpec.describe RepositoriesFilter, type: :filter do
     let(:attributes) { { sort: 'id', order: 'asc', offset: 0, limit: 100 } }
 
     it 'must return any' do
-      filter = described_class.new(attributes.merge(name: 'a'))
+      filter = described_class.new(attributes.merge(language: 'u', name: 'a'))
 
       expect(filter.search).to be_truthy
 
@@ -39,7 +39,7 @@ RSpec.describe RepositoriesFilter, type: :filter do
     end
 
     it 'must return empty' do
-      filter = described_class.new(attributes.merge(name: '%'))
+      filter = described_class.new(attributes.merge(language: '%', name: '%'))
 
       expect(filter.search).to be_truthy
 

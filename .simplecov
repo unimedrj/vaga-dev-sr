@@ -4,5 +4,5 @@ SimpleCov.start 'rails' do
   add_filter 'jobs'
   add_filter 'mailers'
 
-  minimum_coverage 90
+  minimum_coverage 93
 end

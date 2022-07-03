@@ -17,6 +17,14 @@ class Repository {
       method: 'GET'
     });
   }
+
+  create(path) {
+    return axios({
+      url: path,
+      method: 'POST',
+      data: {}
+    });
+  }
 }
 
 class RepositoriesFilter extends ApplicationFilter {
@@ -32,7 +40,7 @@ class RepositoriesFilter extends ApplicationFilter {
 class RepositoriesController {
   constructor() {
     this.controller = this;
-    this.filter = new RepositoriesFilter({sort: 'id', order: 'asc'});
+    this.filter = new RepositoriesFilter({sort: 'id', order: 'desc'});
     this.repository = new Repository();
   }
 
@@ -46,6 +54,20 @@ class RepositoriesController {
     ).then(success => {
       this.repository = new Repository(success.data.repository);
     });
+  }
+
+  create(path) {
+    this.repository.create(path).then((success) => {
+      alert(JSON.stringify(success.data));
+      this.index(path);
+    }, (fail) => {
+      this.repository.errors = fail.data.errors;
+    });
+  }
+
+  clear(path) {
+    this.filter.clear();
+    this.index(path);
   }
 }
 

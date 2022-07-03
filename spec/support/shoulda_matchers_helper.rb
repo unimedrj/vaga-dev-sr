@@ -7,4 +7,5 @@ end
 
 RSpec.configure do |config|
   config.include(Shoulda::Matchers::ActiveModel, type: :filter)
+  config.include(Shoulda::Matchers::ActiveModel, type: :service)
 end

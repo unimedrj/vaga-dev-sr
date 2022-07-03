@@ -5,6 +5,7 @@ RSpec.describe 'repositories/show', type: :view do
     render
 
     expect(rendered).to match('repository.id')
+    expect(rendered).to match('repository.language')
     expect(rendered).to match('repository.name')
     expect(rendered).to match('repository.full_name')
     expect(rendered).to match('repository.description')

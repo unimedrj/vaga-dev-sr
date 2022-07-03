@@ -9,5 +9,9 @@ RSpec.describe RepositoriesController, type: :routing do
     it 'routes to #show' do
       expect(get: '/repositories/1').to route_to('repositories#show', id: '1')
     end
+
+    it 'routes to #create' do
+      expect(post: '/repositories').to route_to('repositories#create')
+    end
   end
 end

@@ -11,6 +11,7 @@ RSpec.describe 'repositories/show.json', type: :view do
     expect(JSON.parse(rendered)).to eq({
       repository: {
         id: repository.id,
+        language: repository.language,
         name: repository.name,
         full_name: repository.full_name,
         description: repository.description,

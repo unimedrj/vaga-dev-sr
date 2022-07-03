@@ -57,4 +57,12 @@ Rails.application.configure do
 
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
+
+  # Raises error for missing translations.
+  config.i18n.raise_on_missing_translations
+  config.i18n.exception_handler = proc { |exception| raise exception.to_exception }
+
+  config.active_job.queue_adapter = :test
+
+  routes.default_url_options = { host: 'localhost', port: 3000 }
 end
