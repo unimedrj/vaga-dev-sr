@@ -32,3 +32,5 @@
 .env.docker-compose
 .byebug_history
 /node_modules
+/devops/codebuild/exec.sh
+/devops/codebuild/.env

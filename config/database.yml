@@ -82,5 +82,5 @@ test:
 production:
   <<: *default
   database: git_jmd_production
-  username: user
-  password: <%= ENV["GITHUB_DATABASE_PASSWORD"] %>
+  # username: user
+  # password: <%= ENV["GITHUB_DATABASE_PASSWORD"] %>

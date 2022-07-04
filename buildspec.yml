@@ -1,0 +1,23 @@
+version: 0.2
+
+run-as: root
+
+phases:
+  install:
+    on-failure: ABORT
+    commands:
+      - mv /usr/local/bin/aws /usr/local/bin/aws2
+      - aws --version
+      - aws2 --version
+  pre_build:
+    on-failure: ABORT
+    commands:
+      - ./devops/codebuild/pre_build.sh
+  build:
+    on-failure: ABORT
+    commands:
+      - ./devops/codebuild/build.sh
+  post_build:
+    on-failure: ABORT
+    commands:
+      - ./devops/codebuild/post_build.sh

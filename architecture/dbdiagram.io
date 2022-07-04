@@ -1,5 +1,6 @@
 Table repositories {
   id bigint
+  language string
   name string
   full_name string
   description string

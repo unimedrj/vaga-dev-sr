@@ -1,5 +1,6 @@
 repository:
   id: bigint, pk
+  language: string, required
   name: string, required
   full_name: string, required
   description: string

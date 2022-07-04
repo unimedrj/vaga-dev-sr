@@ -5,7 +5,7 @@ class Repository {
 
   static where(path, params) {
     return axios({
-      url: path,
+      url: `${path}.json`,
       method: 'GET',
       params: params
     });
@@ -13,14 +13,14 @@ class Repository {
 
   static find(path) {
     return axios({
-      url: path,
+      url: `${path}.json`,
       method: 'GET'
     });
   }
 
   create(path) {
     return axios({
-      url: path,
+      url: `${path}.json`,
       method: 'POST',
       data: {}
     });

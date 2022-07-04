@@ -47,16 +47,16 @@ class RepositoriesService
   end
 
   def successful(body)
-    result = JSON.parse(body)['items'].first
-
-    Repository.create(
-      language:,
-      name: result['name'],
-      full_name: result['full_name'],
-      description: result['description'],
-      external_id: result['id'].to_s,
-      metadata: result
-    )
+    if (result = JSON.parse(body)['items'].first).present?
+      Repository.create(
+        language:,
+        name: result['name'],
+        full_name: result['full_name'],
+        description: result['description'],
+        external_id: result['id'].to_s,
+        metadata: result
+      )
+    end
   end
 
   def unsuccessful(body)

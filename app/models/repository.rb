@@ -3,6 +3,7 @@ class Repository < ApplicationRecord
 
   enum language: LANGUAGES.index_with(&:to_s), _prefix: true
 
+  validates :language, presence: true
   validates :name, presence: true
   validates :full_name, presence: true
   validates :description, presence: false

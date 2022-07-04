@@ -9,6 +9,10 @@ RSpec.describe Repository, type: :model do
     }
   end
 
+  describe '#language' do
+    it { is_expected.to validate_presence_of :language }
+  end
+
   describe '#name' do
     it { is_expected.to validate_presence_of :name }
   end
